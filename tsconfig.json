@@ -7,6 +7,10 @@
       "es2015",
       "dom"
     ],
+    "types": [
+      "chai",
+      "mocha"
+    ],
     "sourceMap": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
