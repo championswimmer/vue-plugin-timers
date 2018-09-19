@@ -1,0 +1,25 @@
+{
+  "name": "vue-plugin-timers",
+  "version": "0.1.0",
+  "description": "Interval and Timeout timers for Vue as a plugin or mixin",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "  "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/championswimmer/vue-plugin-timers.git"
+  },
+  "keywords": [
+    "vue",
+    "timers",
+    "setinterval",
+    "settimeout"
+  ],
+  "author": "Arnav Gupta <championswimmer@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/championswimmer/vue-plugin-timers/issues"
+  },
+  "homepage": "https://github.com/championswimmer/vue-plugin-timers#readme"
+}
