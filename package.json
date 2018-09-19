@@ -2,9 +2,27 @@
   "name": "vue-plugin-timers",
   "version": "0.1.0",
   "description": "Interval and Timeout timers for Vue as a plugin or mixin",
-  "main": "dist/index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "browser": "dist/umd/index.js",
+  "unpkg": "dist/umd/index.min.js",
+  "jsdelivr": "dist/umd/index.min.js",
+  "types": "dist/types/index.d.ts",
+  "typings": "dist/types/index.d.ts",
   "scripts": {
-    "test": "  "
+    "clean": "rimraf dist .rpt2_cache",
+    "prebuild": "npm run clean",
+    "build": "rollup -c build/rollup.config.js",
+    "prepublishOnly": "npm run build",
+    "pretest": "npm run build && npm run lint",
+    "test": "cd test && mocha -r ts-node/register *.ts",
+    "cover": "nyc npm test",
+    "prereport": "npm run cover",
+    "report": "nyc report --reporter lcov --reporter html",
+    "docs:build": "vuepress build docs",
+    "docs:serve": "vuepress dev docs",
+    "lint": "tslint -p tsconfig.json",
+    "lint:fix": "tslint -p tsconfig.json --fix"
   },
   "repository": {
     "type": "git",
@@ -25,10 +43,12 @@
   "devDependencies": {
     "prettier": "^1.14.3",
     "rollup": "^0.66.1",
+    "rollup-plugin-replace": "^2.0.0",
     "rollup-plugin-typescript2": "^0.17.0",
     "rollup-plugin-uglify": "^6.0.0",
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.15.0",
+    "tslint-config-standard": "^8.0.1",
     "tslint-plugin-prettier": "^2.0.0",
     "typescript": "^3.0.3",
     "vue": "^2.5.17"
