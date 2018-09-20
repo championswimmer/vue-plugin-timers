@@ -1,14 +1,27 @@
+import { Vue } from 'vue/types/vue'
+
+export type TimerState = 'created' | 'running' | 'expired' | 'stopped'
 export default class ComponentTimer {
   repeat = false
   interval = 1000
   timerId = -1
-  handler: Function
+  vm: Vue
+  methodName: string
+  state: TimerState
+  method: Function
+  args?: () => []
 
   start() {
     if (this.repeat) {
-      this.timerId = setInterval(this.handler, this.interval)
+      this.timerId = setInterval(() => {
+        this.args ? this.method(...this.args()) : this.method()
+      }, this.interval)
+      this.state = 'running'
     } else {
-      this.timerId = setTimeout(this.handler, this.interval)
+      this.timerId = setTimeout(() => {
+        this.args ? this.method(...this.args()) : this.method()
+        this.state = 'expired'
+      }, this.interval)
     }
   }
   stop() {
@@ -17,11 +30,26 @@ export default class ComponentTimer {
     } else {
       clearTimeout(this.timerId)
     }
+    this.state = 'stopped'
   }
 
-  constructor(handler: Function, interval: number, repeat: boolean) {
+  constructor(
+    methodName: string,
+    interval: number = 1000,
+    repeat: boolean = false,
+    args?: <V extends Vue>(this: V) => []
+  ) {
     this.repeat = repeat
     this.interval = interval
-    this.handler = handler
+    this.methodName = methodName
+    this.state = 'created'
+    this.args = args
+  }
+  setVM(vm: Vue) {
+    this.vm = vm
+    this.method = ((this.vm as any)[this.methodName] as Function).bind(this.vm)
+    if (this.args) {
+      this.args = this.args.bind(this.vm)
+    }
   }
 }
