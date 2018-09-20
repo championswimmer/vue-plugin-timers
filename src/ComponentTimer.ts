@@ -13,12 +13,12 @@ export default class ComponentTimer {
 
   start() {
     if (this.repeat) {
-      this.timerId = setInterval(() => {
+      this.timerId = window.setInterval(() => {
         this.args ? this.method(...this.args()) : this.method()
       }, this.interval)
       this.state = 'running'
     } else {
-      this.timerId = setTimeout(() => {
+      this.timerId = window.setTimeout(() => {
         this.args ? this.method(...this.args()) : this.method()
         this.state = 'expired'
       }, this.interval)

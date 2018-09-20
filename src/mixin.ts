@@ -1,6 +1,7 @@
 import { ComponentOptions } from 'vue'
 import { Vue, VueConstructor } from 'vue/types/vue'
 import ComponentTimer from './ComponentTimer'
+import { VueClass } from 'vue-class-component/lib/declarations'
 
 export default {
   data() {
