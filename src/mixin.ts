@@ -24,21 +24,30 @@ export default {
     if (!this.timers) return
     let vm = this as Vue
     this.timers.forEach((timer) => timer.setVM(vm))
+    // @ts-ignore
+    vm.$timers = {
+      start: () => {
+        this.timers.forEach((timer) => {
+          timer.start()
+        })
+      },
+      stop: () => {
+        this.timers.forEach((timer) => {
+          timer.stop()
+        })
+      }
+    }
   },
   mounted() {
     if (!this.timers) {
       return
     }
-    this.timers.forEach((timer) => {
-      timer.start()
-    })
+    this.$timers.start()
   },
   beforeDestroy() {
     if (!this.$options.timers) {
       return
     }
-    this.timers.forEach((timer) => {
-      timer.stop()
-    })
+    this.$timers.stop()
   }
 } as Vue & ComponentOptions<Vue> & { timers: ComponentTimer[] }

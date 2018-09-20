@@ -32,6 +32,7 @@ describe('basic component timers', () => {
   it('component timer ticks', (done) => {
     setTimeout(() => {
       expect((wrapper.vm as any).count).to.eq(5)
+      wrapper.vm.$timers.stop()
       done()
     }, 1100)
   })

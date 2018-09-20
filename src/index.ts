@@ -25,3 +25,8 @@ declare module 'vue/types/options' {
     timers?: DefaultTimers<V, Methods>
   }
 }
+declare module 'vue/types/vue' {
+  export interface Vue {
+    readonly $timers: { start: Function; stop: Function }
+  }
+}
