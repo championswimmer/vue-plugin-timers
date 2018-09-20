@@ -11,6 +11,7 @@
   "typings": "dist/types/index.d.ts",
   "scripts": {
     "clean": "rimraf dist .rpt2_cache",
+    "distclean": "rimraf dist .rpt2_cache .nyc_output coverage",
     "prebuild": "npm run clean",
     "build": "rollup -c build/rollup.config.js",
     "prepublishOnly": "npm run build",
@@ -19,11 +20,23 @@
     "test:dirty": "cd test && mocha -r ts-node/register *.ts",
     "cover": "nyc npm test",
     "prereport": "npm run cover",
-    "report": "nyc report --reporter lcov --reporter html",
+    "report": "nyc report",
     "docs:build": "vuepress build docs",
     "docs:serve": "vuepress dev docs",
     "lint": "tslint -p tsconfig.json",
     "lint:fix": "tslint -p tsconfig.json --fix"
+  },
+  "nyc": {
+    "exclude": [
+      "build"
+    ],
+    "extension": [
+      "ts"
+    ],
+    "reporter": [
+      "lcov",
+      "lcovonly"
+    ]
   },
   "repository": {
     "type": "git",
@@ -49,6 +62,7 @@
     "jsdom": "^12.0.0",
     "jsdom-global": "^3.0.2",
     "mocha": "^5.2.0",
+    "nyc": "^13.0.1",
     "prettier": "^1.14.3",
     "rollup": "^0.66.1",
     "rollup-plugin-replace": "^2.0.0",
@@ -60,6 +74,7 @@
     "tslint-config-standard": "^8.0.1",
     "tslint-plugin-prettier": "^2.0.0",
     "typescript": "^3.0.3",
-    "vue": "^2.5.17"
+    "vue": "^2.5.17",
+    "vue-template-compiler": "^2.5.17"
   }
 }

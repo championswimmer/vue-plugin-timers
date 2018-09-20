@@ -6,5 +6,6 @@ dist/
 node_modules/
 .rpt2_cache/
 
-
+.nyc_output/
+coverage/
 
