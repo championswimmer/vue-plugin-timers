@@ -23,16 +23,19 @@ export default {
   created() {
     if (!this.timers) return
     let vm = this as Vue
-    this.timers.forEach((timer) => timer.setVM(vm))
+    let timers = this.timers
+    timers.forEach((timer) => timer.setVM(vm))
     // @ts-ignore
     vm.$timers = {
       start: () => {
-        this.timers.forEach((timer) => {
+        timers.forEach((timer) => {
+          console.log(`start: ${timer.methodName} ${timer.state}`)
           timer.start()
         })
       },
       stop: () => {
-        this.timers.forEach((timer) => {
+        timers.forEach((timer) => {
+          console.log(`stop: ${timer.methodName} ${timer.state}`)
           timer.stop()
         })
       }
@@ -45,7 +48,7 @@ export default {
     this.$timers.start()
   },
   beforeDestroy() {
-    if (!this.$options.timers) {
+    if (!this.timers) {
       return
     }
     this.$timers.stop()
