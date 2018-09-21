@@ -4,6 +4,10 @@
 [![npm](https://img.shields.io/npm/v/vue-plugin-timers.svg?style=popout)](https://npmjs.com/vue-plugin-timers)
 [![npm](https://img.shields.io/npm/dm/vue-plugin-timers.svg?style=popout)](https://npmjs.com/vue-plugin-timers)
 ![npm type definitions](https://img.shields.io/npm/types/vue-plugin-timers.svg?style=popout)
+[![unpkg umd min:gzip size](https://img.badgesize.io/https://unpkg.com/vue-plugin-timers.svg?compression=gzip&label=umd:minzip)](https://unpkg.com/vue-plugin-timers)
+[![BCH compliance](https://bettercodehub.com/edge/badge/championswimmer/vue-plugin-timers?branch=master)](https://bettercodehub.com/)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/championswimmer/vue-plugin-timers.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/championswimmer/vue-plugin-timers/alerts/)
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/championswimmer/vue-plugin-timers.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/championswimmer/vue-plugin-timers/context:javascript)
 
 A Vue.JS plugin/mixin that helps set timeouts and heartbeats in your Vue components
 
