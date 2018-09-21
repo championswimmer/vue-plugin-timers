@@ -98,12 +98,12 @@ export default {
 ```
 
 ### Usage: `@Timer` decorator
-> NOTE: This **needs** `vue-class-component` to be installed,
-(and also works with `vue-property-decorator`)
+> ⚠️ IMPORTANT: This **needs** `vue-class-component` to be installed,
+(or `vue-property-decorator`)
 
 ```typescript
 import Vue from 'vue'
-import Component from 'vue-property-decorator'
+import Component from 'vue-class-component'
 import { Timer } from 'vue-plugin-timer'
 
 @Component
@@ -116,3 +116,10 @@ class TimerComponent extends Vue {
     }
 }
 ```
+The `@Timer` decorator takes all the same options as the
+`timers` component options hashes do. Except the method name, because
+you are decorating the method itself and so it is not needed
+
+> NOTE: The **umd** builds do **NOT** have the decorator,
+as decorators are something we usually use when building with
+Vue CLI using Babel and/or Typescript
