@@ -12,8 +12,7 @@ let timerComponent: Vue & { count: number }
 
 describe('ComponentOptions.timers {repeat: true}', () => {
   before(() => {
-    const TimerComponent = {
-      mixins: [VueTimersMixin],
+    const TimerComponent = Vue.extend({
       render: (h) => h('div'),
       data() {
         return {
@@ -29,8 +28,9 @@ describe('ComponentOptions.timers {repeat: true}', () => {
       timers: {
         incr: { interval: 200, repeat: true }
       }
-    }
-    timerComponent = new Vue(TimerComponent)
+    })
+    TimerComponent.mixin(VueTimersMixin)
+    timerComponent = new TimerComponent()
   })
 
   it('component timer ticks multiple times', (done) => {
