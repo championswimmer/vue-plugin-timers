@@ -12,6 +12,9 @@ export default class ComponentTimer {
   args?: () => []
 
   start() {
+    if (this.state === 'running' || this.state === 'expired') {
+      return
+    }
     if (this.repeat) {
       this.timerId = setInterval(() => {
         this.args ? this.method(...this.args()) : this.method()
@@ -22,6 +25,7 @@ export default class ComponentTimer {
         this.args ? this.method(...this.args()) : this.method()
         this.state = 'expired'
       }, this.interval)
+      this.state = 'running'
     }
   }
   stop() {

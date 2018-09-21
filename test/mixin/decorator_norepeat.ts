@@ -29,7 +29,6 @@ describe('@Timer {repeat: false}', () => {
     timerComponent.$mount()
     setTimeout(() => {
       expect(timerComponent.count).to.eq(1)
-      timerComponent.$timers.stop()
       done()
     }, 500)
   })
