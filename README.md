@@ -8,6 +8,9 @@
 [![BCH compliance](https://bettercodehub.com/edge/badge/championswimmer/vue-plugin-timers?branch=master)](https://bettercodehub.com/)
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/championswimmer/vue-plugin-timers.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/championswimmer/vue-plugin-timers/alerts/)
 [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/championswimmer/vue-plugin-timers.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/championswimmer/vue-plugin-timers/context:javascript)
+[![Maintainability](https://api.codeclimate.com/v1/badges/568a445cf1d9bda1ae9d/maintainability)](https://codeclimate.com/github/championswimmer/vue-plugin-timers/maintainability)
+[![codebeat badge](https://codebeat.co/badges/ddbf32be-be79-4fe1-9710-7e0c809f1c21)](https://codebeat.co/projects/github-com-championswimmer-vue-plugin-timers-master)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/1b45f5de98af48dabc0a8b2ff8caca34)](https://www.codacy.com/app/championswimmer/vue-plugin-timers?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=championswimmer/vue-plugin-timers&amp;utm_campaign=Badge_Grade)
 
 A Vue.JS plugin/mixin that helps set timeouts and heartbeats in your Vue components
 
