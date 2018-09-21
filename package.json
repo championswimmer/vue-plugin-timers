@@ -79,5 +79,8 @@
     "vue": "^2.5.17",
     "vue-class-component": "^6.2.0",
     "vue-template-compiler": "^2.5.17"
+  },
+  "peerDependencies": {
+    "vue-class-component": "^6.2.0"
   }
 }
