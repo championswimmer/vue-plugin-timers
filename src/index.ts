@@ -1,8 +1,9 @@
 import VC, { Vue } from 'vue/types/vue'
 import VueTimersMixin from './mixin'
-import { Timer } from './decorator'
 
-export { VueTimersMixin, Timer }
+export { VueTimersMixin }
+export { Timer } from './decorator'
+
 export default function(Vue: VC.VueConstructor) {
   Vue.mixin(VueTimersMixin)
 }

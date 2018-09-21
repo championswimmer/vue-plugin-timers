@@ -5,20 +5,21 @@ export interface TimerDecoratorOptions {
   repeat?: true
   args?: () => any
 }
-let Timer: ((opts: TimerDecoratorOptions) => VueDecorator)
-
+let Timer
+function timerDecorator(opt: TimerDecoratorOptions) {
+  return createDecorator((options, key) => {
+    if (!options.timers) {
+      options.timers = {}
+    }
+    options.timers[key] = {
+      interval: opt.interval || 1000,
+      repeat: opt.repeat || false,
+      args: opt.args
+    }
+  })
+}
 // @ts-ignore
 if (process.env.MODULE_FORMAT !== 'umd') {
-  Timer = (opt: TimerDecoratorOptions) =>
-    createDecorator((options, key) => {
-      if (!options.timers) {
-        options.timers = {}
-      }
-      options.timers[key] = {
-        interval: opt.interval || 1000,
-        repeat: opt.repeat || false,
-        args: opt.args
-      }
-    })
+  Timer = timerDecorator
 }
 export { Timer }
