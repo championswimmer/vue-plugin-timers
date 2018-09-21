@@ -11,7 +11,7 @@ Vue.use(VueTimers)
 class FirstComponent extends Vue {
   count = 0
 
-  @Timer({ interval: 200 })
+  @Timer({ interval: 200, repeat: true })
   incr() {
     this.count++
   }
@@ -21,13 +21,13 @@ class FirstComponent extends Vue {
 class SecondComponent extends Vue {
   count = 0
 
-  @Timer({ interval: 400 })
+  @Timer({ interval: 400, repeat: true })
   incr() {
     this.count++
   }
 }
 
-describe('[Vue.use]: @Timer {repeat: false}', () => {
+describe('[Vue.use]: @Timer {repeat: true}', () => {
   let first: FirstComponent
   let second: SecondComponent
   before(() => {
@@ -38,8 +38,8 @@ describe('[Vue.use]: @Timer {repeat: false}', () => {
   })
   it('both components timers work', (done) => {
     setTimeout(() => {
-      expect(first.count).to.eq(1)
-      expect(second.count).to.eq(1)
+      expect(first.count).to.eq(4)
+      expect(second.count).to.eq(2)
       done()
     }, 900)
   })
