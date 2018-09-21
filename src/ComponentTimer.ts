@@ -5,10 +5,10 @@ export default class ComponentTimer {
   repeat = false
   interval = 1000
   timerId: NodeJS.Timer | number = -1
-  vm: Vue
+  vm!: Vue
   methodName: string
   state: TimerState
-  method: Function
+  method!: Function
   args?: () => []
 
   start() {
@@ -47,6 +47,9 @@ export default class ComponentTimer {
   }
   setVM(vm: Vue) {
     this.vm = vm
+    if (!(this.vm as any)[this.methodName]) {
+      throw new Error('ERR_METHOD_NOT_FOUND: Method name in timer is probably wrong')
+    }
     this.method = ((this.vm as any)[this.methodName] as Function).bind(this.vm)
     if (this.args) {
       this.args = this.args.bind(this.vm)

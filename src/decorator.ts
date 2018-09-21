@@ -1,11 +1,11 @@
-import { createDecorator } from 'vue-class-component'
+import { createDecorator, VueDecorator } from 'vue-class-component'
 
 export interface TimerDecoratorOptions {
   interval?: number
   repeat?: true
   args?: () => any
 }
-let Timer: ((opts: TimerDecoratorOptions) => MethodDecorator)
+let Timer: ((opts: TimerDecoratorOptions) => VueDecorator)
 
 // @ts-ignore
 if (process.env.MODULE_FORMAT !== 'umd') {
