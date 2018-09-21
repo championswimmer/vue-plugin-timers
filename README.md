@@ -1,4 +1,9 @@
 # vue-plugin-timers
+[![Travis (.org)](https://img.shields.io/travis/championswimmer/vue-plugin-timers.svg?style=popout)](https://travis-ci.org/championswimmer/vue-plugin-timers)
+[![Codecov](https://img.shields.io/codecov/c/github/championswimmer/vue-plugin-timers.svg?style=popout)](https://codecov.io/github/championswimmer/vue-plugin-timers)
+[![npm](https://img.shields.io/npm/v/vue-plugin-timers.svg?style=popout)](https://npmjs.com/vue-plugin-timers)
+[![npm](https://img.shields.io/npm/dm/vue-plugin-timers.svg?style=popout)](https://npmjs.com/vue-plugin-timers)
+![npm type definitions](https://img.shields.io/npm/types/vue-plugin-timers.svg?style=popout)
 
 A Vue.JS plugin/mixin that helps set timeouts and heartbeats in your Vue components
 
