@@ -54,4 +54,4 @@ export default {
     }
     this.$timers.stop()
   }
-} as Vue & ComponentOptions<Vue> & { timers: ComponentTimer[] }
+} as typeof Vue & Vue & ComponentOptions<Vue> & { timers: ComponentTimer[] }
