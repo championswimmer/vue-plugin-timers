@@ -1,10 +1,13 @@
+// @ts-ignore
 import Vue from 'vue/dist/vue'
 import { expect } from 'chai'
+// @ts-ignore
 import jsdomGlobal from 'jsdom-global'
 import { ComponentOptions } from 'vue/types/options'
 import { VueTimersMixin } from '..'
 
 jsdomGlobal()
+Vue.prototype.productionTip = false
 let timerComponent: Vue
 before(() => {
   const TimerComponent = Vue.extend({
@@ -15,7 +18,7 @@ before(() => {
       }
     },
     methods: {
-      incr() {
+      incr(this: { count: number }) {
         this.count++
       }
     },
@@ -32,7 +35,6 @@ describe('timer with repeat = true', () => {
     timerComponent.$mount()
     setTimeout(() => {
       expect(timerComponent.count).to.eq(1)
-      timerComponent.$timers.stop()
       done()
     }, 1100)
   })

@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "module": "es2015",
+    "module": "commonjs",
     "moduleResolution": "node",
-    "target": "es2015",
+    "target": "es5",
     "lib": [
       "es2015",
       "dom"
@@ -20,13 +20,14 @@
     "noImplicitReturns": true,
     "noImplicitAny": true,
     "noImplicitThis": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "experimentalDecorators": true
   },
   "include": [
     "src"
   ],
   "exclude": [
     "node_modules",
-    "test/**/*"
+    "dist"
   ]
 }

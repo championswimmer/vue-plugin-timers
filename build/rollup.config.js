@@ -11,6 +11,7 @@ const genTsPlugin = (configOpts) => typescript({
   useTsconfigDeclarationDir: true,
   tsconfigOverride: {
     compilerOptions: {
+      module: 'esnext',
       target: configOpts.target,
       declaration: configOpts.genDts
     }

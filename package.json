@@ -16,8 +16,8 @@
     "build": "rollup -c build/rollup.config.js",
     "prepublishOnly": "npm run build",
     "pretest": "npm run build && npm run lint",
-    "test": "cd test && mocha -r ts-node/register *.ts",
-    "test:dirty": "cd test && mocha -r ts-node/register *.ts",
+    "test": "mocha -r ts-node/register test/**/*.ts",
+    "test:dirty": "mocha -r ts-node/register test/**/*.ts",
     "cover": "nyc npm test",
     "prereport": "npm run cover",
     "report": "nyc report",
@@ -31,11 +31,12 @@
       "build"
     ],
     "extension": [
-      "ts"
+      "ts",
+      "js"
     ],
     "reporter": [
       "lcov",
-      "lcovonly"
+      "text-summary"
     ]
   },
   "repository": {

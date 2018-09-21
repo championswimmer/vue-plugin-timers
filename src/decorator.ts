@@ -5,7 +5,7 @@ export interface TimerDecoratorOptions {
   repeat?: true
   args?: () => any
 }
-let Timer: ((opts: TimerDecoratorOptions) => MethodDecorator) | undefined
+let Timer: ((opts: TimerDecoratorOptions) => MethodDecorator)
 
 // @ts-ignore
 if (process.env.MODULE_FORMAT !== 'umd') {

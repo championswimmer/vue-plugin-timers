@@ -4,7 +4,7 @@ export type TimerState = 'created' | 'running' | 'expired' | 'stopped'
 export default class ComponentTimer {
   repeat = false
   interval = 1000
-  timerId = -1
+  timerId: NodeJS.Timer | number = -1
   vm: Vue
   methodName: string
   state: TimerState
@@ -13,12 +13,12 @@ export default class ComponentTimer {
 
   start() {
     if (this.repeat) {
-      this.timerId = window.setInterval(() => {
+      this.timerId = setInterval(() => {
         this.args ? this.method(...this.args()) : this.method()
       }, this.interval)
       this.state = 'running'
     } else {
-      this.timerId = window.setTimeout(() => {
+      this.timerId = setTimeout(() => {
         this.args ? this.method(...this.args()) : this.method()
         this.state = 'expired'
       }, this.interval)
@@ -26,9 +26,9 @@ export default class ComponentTimer {
   }
   stop() {
     if (this.repeat) {
-      clearInterval(this.timerId)
+      clearInterval(this.timerId as number)
     } else {
-      clearTimeout(this.timerId)
+      clearTimeout(this.timerId as number)
     }
     this.state = 'stopped'
   }

@@ -1,10 +1,13 @@
 import Component, { mixins } from 'vue-class-component'
+// @ts-ignore
 import Vue from 'vue/dist/vue'
 import { expect } from 'chai'
+// @ts-ignore
 import jsdomGlobal from 'jsdom-global'
 import { VueTimersMixin, Timer } from '..'
 
 jsdomGlobal()
+Vue.prototype.productionTip = false
 let timerComponent: Vue
 before(() => {
   @Component({
@@ -21,7 +24,7 @@ before(() => {
   timerComponent = new TimerComponent()
 })
 
-describe('timer with repeat = false', () => {
+describe('decorated timer with repeat = false', () => {
   it('component timer ticks once', (done) => {
     timerComponent.$mount()
     setTimeout(() => {
