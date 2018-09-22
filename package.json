@@ -4,7 +4,10 @@
   "description": "Interval and Timeout timers for Vue as a plugin or mixin",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
-  "browser": "dist/umd/index.js",
+  "browser": {
+    "./dist/cjs/index.js": "./dist/umd/index.js",
+    "./dist/esm/index.js": "./dist/esm/index.js"
+  },
   "unpkg": "dist/umd/index.min.js",
   "jsdelivr": "dist/umd/index.min.js",
   "types": "dist/types/index.d.ts",
