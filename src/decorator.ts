@@ -5,7 +5,8 @@ export interface TimerDecoratorOptions {
   repeat?: true
   args?: () => any
 }
-let Timer
+let Timer: (opt: TimerDecoratorOptions) => VueDecorator
+
 function timerDecorator(opt: TimerDecoratorOptions) {
   return createDecorator((options, key) => {
     if (!options.timers) {
