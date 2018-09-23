@@ -4,6 +4,7 @@
 [![npm](https://img.shields.io/npm/v/vue-plugin-timers.svg?style=popout)](https://npmjs.com/vue-plugin-timers)
 [![npm](https://img.shields.io/npm/dm/vue-plugin-timers.svg?style=popout)](https://npmjs.com/vue-plugin-timers)
 ![npm type definitions](https://img.shields.io/npm/types/vue-plugin-timers.svg?style=popout)
+[![npm bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/vue-plugin-timers.svg?label=npm%3Asize%3Agzip)](https://bundlephobia.com/result?p=vue-plugin-timers)
 [![unpkg umd min:gzip size](https://img.badgesize.io/https://unpkg.com/vue-plugin-timers.svg?compression=gzip&label=umd:minzip)](https://unpkg.com/vue-plugin-timers)
 [![BCH compliance](https://bettercodehub.com/edge/badge/championswimmer/vue-plugin-timers?branch=master)](https://bettercodehub.com/)
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/championswimmer/vue-plugin-timers.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/championswimmer/vue-plugin-timers/alerts/)
