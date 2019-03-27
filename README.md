@@ -22,8 +22,10 @@ Say we create a vue.js component
 
 ```js
 export default {
-  data: {
-    minutes: new Date().getMinutes()
+  data() {
+    return {
+      minutes: new Date().getMinutes()
+    }
   }
 }
 ```
