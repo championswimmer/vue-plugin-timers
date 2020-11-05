@@ -30,7 +30,7 @@ class SecondComponent extends Vue {
 describe('[Vue.use]: @Timer {repeat: true}', () => {
   let first: FirstComponent
   let second: SecondComponent
-  before(() => {
+  beforeEach(() => {
     first = new FirstComponent()
     first.$mount()
     second = new SecondComponent()
@@ -43,7 +43,7 @@ describe('[Vue.use]: @Timer {repeat: true}', () => {
       done()
     }, 900)
   })
-  after(() => {
+  afterEach(() => {
     first.$destroy()
     second.$destroy()
   })

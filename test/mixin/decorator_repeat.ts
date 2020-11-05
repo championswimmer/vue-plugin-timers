@@ -23,7 +23,7 @@ class TimerComponent extends mixins(VueTimersMixin) {
 let timerComponent: TimerComponent
 
 describe('@Timer {repeat: true}', () => {
-  before(() => {
+  beforeEach(() => {
     timerComponent = new TimerComponent()
   })
   it('component timer ticks once', (done) => {
@@ -34,7 +34,27 @@ describe('@Timer {repeat: true}', () => {
       done()
     }, 500)
   })
-  after(() => {
+  it('component timer is stopped by name', (done) => {
+    const timerName = 'incr'
+    timerComponent.$mount()
+    setTimeout(() => {
+      timerComponent.$timers.stopByName(timerName)
+      expect(timerComponent.$timers.isTimerRunning(timerName)).to.be.false
+      done()
+    }, 500)
+  })
+  it('component timer is restarted by name', (done) => {
+    const timerName = 'incr'
+    timerComponent.$mount()
+    setTimeout(() => {
+      timerComponent.$timers.stopByName(timerName)
+      expect(timerComponent.$timers.isTimerRunning(timerName)).to.be.false
+      timerComponent.$timers.startByName(timerName)
+      expect(timerComponent.$timers.isTimerRunning(timerName)).to.be.true
+      done()
+    }, 500)
+  })
+  afterEach(() => {
     timerComponent.$destroy()
   })
 })

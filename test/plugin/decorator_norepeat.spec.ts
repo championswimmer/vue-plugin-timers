@@ -30,7 +30,7 @@ class SecondComponent extends Vue {
 describe('[Vue.use]: @Timer {repeat: false}', () => {
   let first: FirstComponent
   let second: SecondComponent
-  before(() => {
+  beforeEach(() => {
     first = new FirstComponent()
     first.$mount()
     second = new SecondComponent()
@@ -43,7 +43,25 @@ describe('[Vue.use]: @Timer {repeat: false}', () => {
       done()
     }, 900)
   })
-  after(() => {
+  it('component timer is stopped by name', (done) => {
+    const timerName = 'incr'
+    setTimeout(() => {
+      first.$timers.stopByName(timerName)
+      expect(first.$timers.isTimerRunning(timerName)).to.be.false
+      done()
+    }, 1100)
+  })
+  it('component timer is restarted by name', (done) => {
+    const timerName = 'incr'
+    setTimeout(() => {
+      first.$timers.stopByName(timerName)
+      expect(first.$timers.isTimerRunning(timerName)).to.be.false
+      first.$timers.startByName(timerName)
+      expect(first.$timers.isTimerRunning(timerName)).to.be.true
+      done()
+    }, 1100)
+  })
+  afterEach(() => {
     first.$destroy()
     second.$destroy()
   })
