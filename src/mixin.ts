@@ -38,6 +38,10 @@ export default {
     timers.forEach((timer) => timer.setVM(vm))
     // @ts-ignore
     vm.$timers = {
+      isTimerRunning: (timerName: string) => {
+        const timer = findTimerByName(timers, timerName)
+        return timer.isRunning()
+      },
       startByName: (timerName: string) => {
         const timer = findTimerByName(timers, timerName)
         timer.start()
@@ -50,7 +54,7 @@ export default {
       },
       stopByName: (timerName: string) => {
         const timer = findTimerByName(timers, timerName)
-        timer.start()
+        timer.stop()
       },
       stop: () => {
         timers.forEach((timer) => {
