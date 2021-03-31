@@ -11,6 +11,10 @@ export default class ComponentTimer {
   method!: Function
   args?: () => []
 
+  isRunning() {
+    return this.state === 'running'
+  }
+
   start() {
     if (this.state === 'running' || this.state === 'expired') {
       return

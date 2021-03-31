@@ -11,7 +11,7 @@ Vue.config.productionTip = false
 let timerComponent: Vue & { count: number }
 
 describe('ComponentOptions.timers {repeat: false}', () => {
-  before(() => {
+  beforeEach(() => {
     const TimerComponent = Vue.extend({
       render: (h) => h('div'),
       data() {
@@ -40,8 +40,28 @@ describe('ComponentOptions.timers {repeat: false}', () => {
       done()
     }, 800)
   })
+  it('component timer is stopped by name', (done) => {
+    const timerName = 'incr'
+    timerComponent.$mount()
+    setTimeout(() => {
+      timerComponent.$timers.stopByName(timerName)
+      expect(timerComponent.$timers.isTimerRunning(timerName)).to.be.false
+      done()
+    }, 800)
+  })
+  it('component timer is restarted by name', (done) => {
+    const timerName = 'incr'
+    timerComponent.$mount()
+    setTimeout(() => {
+      timerComponent.$timers.stopByName(timerName)
+      expect(timerComponent.$timers.isTimerRunning(timerName)).to.be.false
+      timerComponent.$timers.startByName(timerName)
+      expect(timerComponent.$timers.isTimerRunning(timerName)).to.be.true
+      done()
+    }, 800)
+  })
 
-  after(() => {
+  afterEach(() => {
     timerComponent.$destroy()
   })
 })

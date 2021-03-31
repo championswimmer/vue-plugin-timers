@@ -3,6 +3,16 @@ import { Vue, VueConstructor } from 'vue/types/vue'
 import ComponentTimer from './ComponentTimer'
 import { VueClass } from 'vue-class-component/lib/declarations'
 
+const findTimerByName = function(timers: ComponentTimer[], timerName: string) {
+  const timer = timers.filter((timer) => timer.methodName === timerName).shift()
+
+  if (!timer) {
+    throw new Error(`ERR_TIMER_NOT_FOUND: Name of timer '${timerName}' does not exists`)
+  }
+
+  return timer
+}
+
 export default {
   data() {
     if (!this.$options.timers) {
@@ -28,11 +38,23 @@ export default {
     timers.forEach((timer) => timer.setVM(vm))
     // @ts-ignore
     vm.$timers = {
+      isTimerRunning: (timerName: string) => {
+        const timer = findTimerByName(timers, timerName)
+        return timer.isRunning()
+      },
+      startByName: (timerName: string) => {
+        const timer = findTimerByName(timers, timerName)
+        timer.start()
+      },
       start: () => {
         timers.forEach((timer) => {
           console.log(`start: ${timer.methodName} ${timer.state}`)
           timer.start()
         })
+      },
+      stopByName: (timerName: string) => {
+        const timer = findTimerByName(timers, timerName)
+        timer.stop()
       },
       stop: () => {
         timers.forEach((timer) => {

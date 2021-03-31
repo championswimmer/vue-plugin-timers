@@ -40,6 +40,26 @@ describe('ComponentOptions.timers {repeat: true}', () => {
       done()
     }, 1100)
   })
+  it('component timer is stopped by name', (done) => {
+    const timerName = 'incr'
+    timerComponent.$mount()
+    setTimeout(() => {
+      timerComponent.$timers.stopByName(timerName)
+      expect(timerComponent.$timers.isTimerRunning(timerName)).to.be.false
+      done()
+    }, 1100)
+  })
+  it('component timer is restarted by name', (done) => {
+    const timerName = 'incr'
+    timerComponent.$mount()
+    setTimeout(() => {
+      timerComponent.$timers.stopByName(timerName)
+      expect(timerComponent.$timers.isTimerRunning(timerName)).to.be.false
+      timerComponent.$timers.startByName(timerName)
+      expect(timerComponent.$timers.isTimerRunning(timerName)).to.be.true
+      done()
+    }, 1100)
+  })
   after(() => {
     timerComponent.$destroy()
   })

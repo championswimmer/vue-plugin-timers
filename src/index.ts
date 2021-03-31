@@ -29,6 +29,12 @@ declare module 'vue/types/options' {
 }
 declare module 'vue/types/vue' {
   export interface Vue {
-    readonly $timers: { start: Function; stop: Function }
+    readonly $timers: {
+      isTimerRunning(timerName: string): boolean
+      startByName(timerName: string): void
+      start: Function
+      stopByName(timerName: string): void
+      stop: Function
+    }
   }
 }
